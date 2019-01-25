@@ -1,12 +1,15 @@
-package spring_camel.test;
+package spring_camel.test.Business;
 
 public class Movie {
 	private String name;
 	private double price;
 	
-	private Movie(String _name, double _price) {
-		this.name = _name;
-		this.price = _price;
+	public Movie() {}
+	
+	public Movie(String name, double price) {
+		super();
+		this.name = name;
+		this.price = price;
 	}
 	
 	public String getName() {
@@ -20,6 +23,11 @@ public class Movie {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Movie [name=" + name + ", price=" + price + "]";
 	}
 	
 	

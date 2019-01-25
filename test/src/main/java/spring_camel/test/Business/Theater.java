@@ -1,4 +1,4 @@
-package spring_camel.test;
+package spring_camel.test.Business;
 
 import java.util.ArrayList;
 import java.util.List;
