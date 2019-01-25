@@ -3,8 +3,6 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jackson.JacksonDataFormat;
-import org.apache.camel.model.dataformat.JsonDataFormat;
-import org.apache.camel.model.dataformat.JsonLibrary;
 import org.springframework.stereotype.Component;
 
 import spring_camel.test.Business.Movie;
@@ -58,7 +56,9 @@ public class CinemaRoute extends RouteBuilder{
 		 			System.out.println("Message sent to print:");
 		 			System.out.println(exchange.getIn().getBody().toString());
 		 		}
-		 	});
+		 	})
+		 	.marshal(new JacksonDataFormat(Movie.class))
+		 	.to("file:data/outbox?fileName=Movie ${exchangeId}");
 	 }
 	
 }
